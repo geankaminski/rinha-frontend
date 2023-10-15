@@ -49,7 +49,6 @@ ul {
     .element {
       display: inline;
       color: #4e9590;
-      /* gambiarrinha */
       background: #fff;
     }
 
@@ -69,14 +68,12 @@ ul {
 .bracket {
   color: #f2cab8;
   font-weight: 700;
-  /* gambiarrinha */
   background: #fff;
   padding: 3px 0px 24px 0px;
 }
 
 .key {
   color: #bfbfbf;
-  /* gambiarrinha */
   background: #fff;
   padding-top: 4px;
 }

@@ -33,9 +33,7 @@ const handleJson = async (e) => {
   const file = e.target.files[0];
   filename.value = file.name;
 
-  let stream = null;
-
-  stream = await file
+  let stream = await file
     .stream()
     .pipeThrough(new TextDecoderStream())
     .pipeThrough(parseJSON());
@@ -120,7 +118,6 @@ onUnmounted(() => {
       :class="{ loading }"
       @click="$refs.input.click()"
       aria-label="Load JSON File"
-      accesskey="L"
     >
       {{ loading ? "Loading, please wait..." : "Load JSON" }}
     </button>
@@ -131,16 +128,18 @@ onUnmounted(() => {
 
   <section class="tree-section" v-if="fullJson">
     <div class="json-wrapper">
-      <svg
-        @click="reset"
-        class="back"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-      >
-        <path
-          d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"
-        ></path>
-      </svg>
+      <button class="ghost-btn" aria-label="Back to Upload" @click="reset">
+        <svg
+          class="back"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"
+          ></path>
+        </svg>
+      </button>
+
       <p class="filename">{{ filename }}</p>
     </div>
 
@@ -184,9 +183,9 @@ onUnmounted(() => {
   .json-wrapper {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 4px;
     margin-bottom: 1.5rem;
-    margin-left: 1.2rem;
+    margin-left: 0.9rem;
 
     .filename {
       font-size: 2rem;
@@ -195,7 +194,20 @@ onUnmounted(() => {
 
     .back {
       width: 1.5rem;
+    }
+
+    .ghost-btn {
+      background: transparent;
+      border: none;
       cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }
